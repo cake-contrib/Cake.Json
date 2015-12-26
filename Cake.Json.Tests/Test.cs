@@ -5,7 +5,7 @@ using Cake.Core.IO;
 namespace Cake.Json.Tests
 {
     [TestFixture ()]
-    public class YamlTests
+    public class JsonTests
     {
         FakeCakeContext context;
 
