@@ -2,7 +2,7 @@
 <package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
       <id>Cake.Json</id>
-      <version>1.0.0</version>
+      <version>$version$</version>
       <authors>Redth</authors>
       <owners>Redth</owners>
       <title>Cake.Json</title>
@@ -17,7 +17,7 @@
       <tags>Cake Script Build JSON</tags>
 
       <dependencies>
-         <dependency id="Cake.Core" version="0.5.5" />
+         <dependency id="Cake.Core" version="0.7.0" />
          <dependency id="Newtonsoft.Json" version="7.0.1" />
       </dependencies>
    </metadata>
