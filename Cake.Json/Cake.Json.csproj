@@ -30,11 +30,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="Cake.Core">
-      <HintPath>..\packages\Cake.Core.0.5.5\lib\net45\Cake.Core.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Cake.Core">
+      <HintPath>..\packages\Cake.Core.0.7.0\lib\net45\Cake.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
