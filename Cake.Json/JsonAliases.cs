@@ -9,7 +9,7 @@ using Newtonsoft.Json.Linq;
 namespace Cake.Json
 {
     /// <summary>
-    /// YAML related cake aliases.
+    /// JSON related cake aliases.
     /// </summary>
     [CakeAliasCategory ("Json")]
     public static class JsonAliases
