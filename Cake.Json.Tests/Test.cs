@@ -10,6 +10,37 @@ namespace Cake.Json.Tests
         FakeCakeContext context;
 
         const string SERIALIZED_JSON =  @"{""Name"":""Testing"",""Items"":[""One"",""Two"",""Three""],""KeysAndValues"":{""Key"":""Value"",""AnotherKey"":""AnotherValue"",""Such"":""Wow""},""Nested"":{""Id"":0,""Value"":7.3},""Multiples"":[{""Id"":1,""Value"":14.6},{""Id"":2,""Value"":29.2},{""Id"":3,""Value"":58.4}]}";
+        const string SERIALIZED_JSON_INDENTED = @"{
+  ""Name"": ""Testing"",
+  ""Items"": [
+    ""One"",
+    ""Two"",
+    ""Three""
+  ],
+  ""KeysAndValues"": {
+    ""Key"": ""Value"",
+    ""AnotherKey"": ""AnotherValue"",
+    ""Such"": ""Wow""
+  },
+  ""Nested"": {
+    ""Id"": 0,
+    ""Value"": 7.3
+  },
+  ""Multiples"": [
+    {
+      ""Id"": 1,
+      ""Value"": 14.6
+    },
+    {
+      ""Id"": 2,
+      ""Value"": 29.2
+    },
+    {
+      ""Id"": 3,
+      ""Value"": 58.4
+    }
+  ]
+}";
 
         [SetUp]
         public void Setup ()
@@ -32,6 +63,28 @@ namespace Cake.Json.Tests
 
             Assert.IsNotEmpty (json);
             Assert.AreEqual (SERIALIZED_JSON, json);
+        }
+
+        [Test]
+        public void SerializeToSTringWithNoIndentation()
+        {
+            var obj = new TestObject();
+
+            var json = context.CakeContext.SerializeJson (obj, Formatting.None);
+
+            Assert.IsNotEmpty (json);
+            Assert.AreEqual (SERIALIZED_JSON, json);
+        }
+
+        [Test]
+        public void SerializeToStringWithIndentation()
+        {
+            var obj = new TestObject();
+
+            var json = context.CakeContext.SerializeJson (obj, Formatting.Indented);
+
+            Assert.IsNotEmpty (json);
+            Assert.AreEqual (SERIALIZED_JSON_INDENTED, json);
         }
 
         [Test]

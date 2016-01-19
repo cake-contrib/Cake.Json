@@ -4,6 +4,7 @@ using Cake.Core.IO;
 using Cake.Core;
 using System.IO;
 using System.Text;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Cake.Json
@@ -67,6 +68,25 @@ namespace Cake.Json
         public static string SerializeJson<T> (this ICakeContext context, T instance)
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject (instance);
+        }
+
+        /// <summary>
+        /// Serializes an object to a JSON string, with or without pretty formatting.
+        /// </summary>
+        /// <returns>The JSON string.</returns>
+        /// <param name="context">The context.</param>
+        /// <param name="instance">The object to serialize.</param>
+        /// <param name="formatting">Whether to pretty-print the JSON string or not.</param>
+        /// <typeparam name="T">The type of object to serialize.</typeparam>
+        [CakeMethodAlias]
+        public static string SerializeJson<T>(this ICakeContext context, T instance, Formatting formatting)
+        {
+            return Newtonsoft.Json.JsonConvert.SerializeObject (instance, new JsonSerializerSettings
+            {
+                Formatting = formatting == Formatting.Indented
+                    ? Newtonsoft.Json.Formatting.Indented
+                    : Newtonsoft.Json.Formatting.None
+            });
         }
 
 
