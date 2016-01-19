@@ -82,6 +82,19 @@ namespace Cake.Json
         {
             return JObject.Parse (json);
         }
+
+        /// <summary>
+        /// Parses the file contents into a JObject.
+        /// </summary>
+        /// <returns>The JObject.</returns>
+        /// <param name="context">The context.</param>
+        /// <param name="filename">The filename to serialize from.</param>
+        [CakeMethodAlias]
+        [CakeNamespaceImport("Newtonsoft.Json.Linq")]
+        public static JObject ParseJsonFromFile(this ICakeContext context, FilePath filename)
+        {
+            return JObject.Parse (File.ReadAllText (filename.MakeAbsolute (context.Environment).FullPath));
+        }
     }
 }
 
