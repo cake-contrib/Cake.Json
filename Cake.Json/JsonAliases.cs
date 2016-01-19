@@ -49,12 +49,18 @@ namespace Cake.Json
         /// <param name="context">The context.</param>
         /// <param name="filename">The filename to serialize to.</param>
         /// <param name="instance">The object to serialize.</param>
+        /// <param name="formatting">Whether to pretty-print the JSON output.</param>
         /// <typeparam name="T">The type of object to serialize.</typeparam>
         [CakeMethodAlias]
-        public static void SerializeJsonToFile<T> (this ICakeContext context, FilePath filename, T instance)
+        public static void SerializeJsonToFile<T> (this ICakeContext context, FilePath filename, T instance, Formatting formatting = Formatting.None)
         {
             File.WriteAllText (filename.MakeAbsolute (context.Environment).FullPath,
-                Newtonsoft.Json.JsonConvert.SerializeObject (instance));
+                Newtonsoft.Json.JsonConvert.SerializeObject (instance, new JsonSerializerSettings
+                {
+                    Formatting = formatting == Formatting.Indented
+                    ? Newtonsoft.Json.Formatting.Indented
+                    : Newtonsoft.Json.Formatting.None
+                }));
         }
 
         /// <summary>
@@ -63,23 +69,10 @@ namespace Cake.Json
         /// <returns>The JSON string.</returns>
         /// <param name="context">The context.</param>
         /// <param name="instance">The object to serialize.</param>
+        /// <param name="formatting">Whether to pretty-print the JSON output.</param>
         /// <typeparam name="T">The type of object to serialize.</typeparam>
         [CakeMethodAlias]
-        public static string SerializeJson<T> (this ICakeContext context, T instance)
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject (instance);
-        }
-
-        /// <summary>
-        /// Serializes an object to a JSON string, with or without pretty formatting.
-        /// </summary>
-        /// <returns>The JSON string.</returns>
-        /// <param name="context">The context.</param>
-        /// <param name="instance">The object to serialize.</param>
-        /// <param name="formatting">Whether to pretty-print the JSON string or not.</param>
-        /// <typeparam name="T">The type of object to serialize.</typeparam>
-        [CakeMethodAlias]
-        public static string SerializeJson<T>(this ICakeContext context, T instance, Formatting formatting)
+        public static string SerializeJson<T> (this ICakeContext context, T instance, Formatting formatting = Formatting.None)
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject (instance, new JsonSerializerSettings
             {
@@ -88,7 +81,6 @@ namespace Cake.Json
                     : Newtonsoft.Json.Formatting.None
             });
         }
-
 
         /// <summary>
         /// Parses the JSON into a JObject.

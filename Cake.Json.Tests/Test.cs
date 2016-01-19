@@ -68,7 +68,7 @@ namespace Cake.Json.Tests
         [Test]
         public void SerializeToSTringWithNoIndentation()
         {
-            var obj = new TestObject();
+            var obj = new TestObject ();
 
             var json = context.CakeContext.SerializeJson (obj, Formatting.None);
 
@@ -79,7 +79,7 @@ namespace Cake.Json.Tests
         [Test]
         public void SerializeToStringWithIndentation()
         {
-            var obj = new TestObject();
+            var obj = new TestObject ();
 
             var json = context.CakeContext.SerializeJson (obj, Formatting.Indented);
 
@@ -100,6 +100,36 @@ namespace Cake.Json.Tests
 
             Assert.IsNotEmpty (json);
             Assert.AreEqual (SERIALIZED_JSON, json);
+        }
+
+        [Test]
+        public void SerializeToFileWithNoIndentation()
+        {
+            var obj = new TestObject ();
+
+            var file = new FilePath ("./serialized.json");
+
+            context.CakeContext.SerializeJsonToFile (file, obj, Formatting.None);
+
+            var json = System.IO.File.ReadAllText (file.MakeAbsolute (context.CakeContext.Environment).FullPath);
+
+            Assert.IsNotEmpty (json);
+            Assert.AreEqual (SERIALIZED_JSON, json);
+        }
+
+        [Test]
+        public void SerializeToFileWithIndentation()
+        {
+            var obj = new TestObject ();
+
+            var file = new FilePath ("./serialized.json");
+
+            context.CakeContext.SerializeJsonToFile (file, obj, Formatting.Indented);
+
+            var json = System.IO.File.ReadAllText (file.MakeAbsolute (context.CakeContext.Environment).FullPath);
+
+            Assert.IsNotEmpty (json);
+            Assert.AreEqual (SERIALIZED_JSON_INDENTED, json);
         }
 
         [Test]
