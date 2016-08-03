@@ -68,6 +68,24 @@ namespace Cake.Json.Tests
             Assert.IsNotNull (testObject);
             Assert.AreEqual ("Testing", testObject.Name);
         }
+
+        [Test]
+        public void ParseFromString ()
+        {
+            var testObject = context.CakeContext.ParseJson(SERIALIZED_JSON);
+
+            Assert.IsNotNull (testObject);
+            Assert.AreEqual ("Testing", testObject.Value<string> ("Name"));
+        }
+
+        [Test]
+        public void ParseFromFile()
+        {
+            var testObject = context.CakeContext.ParseJsonFromFile("test.json");
+
+            Assert.IsNotNull(testObject);
+            Assert.AreEqual ("Testing", testObject.Value<string> ("Name"));
+        }
     }
 }
 
