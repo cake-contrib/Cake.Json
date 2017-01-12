@@ -91,7 +91,7 @@ namespace Cake.Json
         /// <param name="instance">The object to serialize.</param>
         /// <typeparam name="T">The type of object to serialize.</typeparam>
         [CakeMethodAlias]
-        public static string SerializeJson<T> (this ICakeContext context, T instance)
+        public static string SerializeJsonPretty<T> (this ICakeContext context, T instance)
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject (instance, Newtonsoft.Json.Formatting.Indented);
         }
