@@ -1,7 +1,9 @@
 ﻿using System;
-using Cake.Core.IO;
-using Cake.Core;
 using System.Collections.Generic;
+using Cake.Core;
+using Cake.Core.Configuration;
+using Cake.Core.IO;
+using Cake.Core.Tooling;
 using Cake.Testing;
 
 namespace Cake.Json.Tests
@@ -27,8 +29,11 @@ namespace Cake.Json.Tests
             var args = new FakeCakeArguments ();
             var processRunner = new ProcessRunner (environment, log);
             var registry = new WindowsRegistry ();
-
-            context = new CakeContext (fileSystem, environment, globber, log, args, processRunner, registry);
+            var configuration = new FakeConfiguration();
+            var toolRepository = new ToolRepository (environment);
+            var toolResolutionStrategy = new ToolResolutionStrategy (fileSystem, environment, globber, configuration);
+            var tools = new ToolLocator(environment, toolRepository, toolResolutionStrategy);
+            context = new CakeContext (fileSystem, environment, globber, log, args, processRunner, registry, tools);
             context.Environment.WorkingDirectory = testsDir;
         }
 
