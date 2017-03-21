@@ -17,7 +17,6 @@
       <tags>Cake Script Build JSON</tags>
 
       <dependencies>
-         <dependency id="Cake.Core" version="0.16.2" />
          <dependency id="Newtonsoft.Json" version="7.0.1" />
       </dependencies>
    </metadata>
