@@ -15,16 +15,9 @@
       <copyright>Copyright (c) Redth 2015</copyright>
       <releaseNotes>Initial Release</releaseNotes>
       <tags>Cake Script Build JSON</tags>
-
-      <dependencies>
-         <dependency id="Newtonsoft.Json" version="7.0.1" />
-      </dependencies>
    </metadata>
-
    <files>
       <file src="./Cake.Json/bin/Release/Cake.Json.dll" target="lib/net45" />
       <file src="./Cake.Json/bin/Release/Cake.Json.xml" target="lib/net45" />
-      <file src="./packages/Newtonsoft.Json.7.0.1/lib/net45/Newtonsoft.Json.dll" target="lib/net45" /> 
-      <file src="./packages/Newtonsoft.Json.7.0.1/lib/net45/Newtonsoft.Json.xml" target="lib/net45" />      
    </files>
 </package>
