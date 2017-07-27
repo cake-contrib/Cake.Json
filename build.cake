@@ -1,51 +1,39 @@
+#tool nuget:?package=NUnit.ConsoleRunner
+
 var sln = "./Cake.Json.sln";
 var nuspec = "./Cake.Json.nuspec";
+var version = Argument ("version", "1.0.0.0");
+var target = Argument ("target", "build");
+var configuration = Argument("configuration", EnvironmentVariable ("CONFIGURATION") ?? "Release");
 
-var target = Argument ("target", "lib");
-
-Task ("lib").Does (() => 
+Task ("build").Does (() =>
 {
 	NuGetRestore (sln);
-
-	DotNetBuild (sln, c => c.Configuration = "Release");
+	DotNetBuild (sln, c => c.Configuration = configuration);
 });
 
-Task ("nuget").IsDependentOn ("lib").Does (() => 
+Task ("package").IsDependentOn("build").Does (() =>
 {
-	CreateDirectory ("./nupkg/");
+	EnsureDirectoryExists ("./output/");
 
-	NuGetPack (nuspec, new NuGetPackSettings { 
-		Verbosity = NuGetVerbosity.Detailed,
-		OutputDirectory = "./nupkg/",
-		// NuGet messes up path on mac, so let's add ./ in front again
-		BasePath = "././",
-	});	
-});
-
-Task ("push").IsDependentOn ("nuget").Does (() =>
-{
-	// Get the newest (by last write time) to publish
-	var newestNupkg = GetFiles ("nupkg/*.nupkg")
-		.OrderBy (f => new System.IO.FileInfo (f.FullPath).LastWriteTimeUtc)
-		.LastOrDefault ();
-
-	var apiKey = TransformTextFile ("./.nugetapikey").ToString ();
-
-	NuGetPush (newestNupkg, new NuGetPushSettings { 
-		Verbosity = NuGetVerbosity.Detailed,
-		ApiKey = apiKey
+	NuGetPack (nuspec, new NuGetPackSettings {
+		OutputDirectory = "./output/",
+		Version = version,
 	});
 });
 
-Task ("clean").Does (() => 
+Task ("clean").Does (() =>
 {
 	CleanDirectories ("./**/bin");
 	CleanDirectories ("./**/obj");
-
-	CleanDirectories ("./**/Components");
-	CleanDirectories ("./**/tools");
-
-	DeleteFiles ("./**/*.apk");
 });
+
+Task("test").IsDependentOn("package").Does(() =>
+{
+	NUnit3("./**/bin/"+ configuration + "/*.Tests.dll");
+});
+
+Task ("Default")
+	.IsDependentOn ("test");
 
 RunTarget (target);
