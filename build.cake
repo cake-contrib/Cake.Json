@@ -2,7 +2,7 @@
 
 var sln = "./Cake.Json.sln";
 var nuspec = "./Cake.Json.nuspec";
-var version = Argument ("version", "1.0.0.0");
+var version = Argument ("version", EnvironmentVariable ("VERSION") ?? "1.0.0.0");
 var target = Argument ("target", "build");
 var configuration = Argument("configuration", EnvironmentVariable ("CONFIGURATION") ?? "Release");
 
