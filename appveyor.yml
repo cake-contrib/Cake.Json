@@ -1,7 +1,7 @@
 version: 1.0.2.{build}
 configuration: Release
 build_script:
-- ps: .\build.ps1 -Target package
+- ps: .\build.ps1 -Target package -Version "{version}""
 test_script:
 - ps: .\build.ps1 -Target test
 artifacts:
