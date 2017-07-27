@@ -1,7 +1,9 @@
 version: 1.0.2.{build}
 configuration: Release
+install:
+- set NUGET_VERSION=%APPVEYOR_BUILD_VERSION%
 build_script:
-- ps: .\build.ps1 -Target package -ScriptArgs '--version="{version}"'
+- ps: .\build.ps1 -Target package
 test_script:
 - ps: .\build.ps1 -Target test
 artifacts:

@@ -2,7 +2,7 @@
 
 var sln = "./Cake.Json.sln";
 var nuspec = "./Cake.Json.nuspec";
-var version = Argument ("version", EnvironmentVariable ("VERSION") ?? "1.0.0.0");
+var nugetVersion = Argument ("nuget_version", EnvironmentVariable ("NUGET_VERSION") ?? "1.0.0.0");
 var target = Argument ("target", "build");
 var configuration = Argument("configuration", EnvironmentVariable ("CONFIGURATION") ?? "Release");
 
@@ -18,7 +18,7 @@ Task ("package").IsDependentOn("build").Does (() =>
 
 	NuGetPack (nuspec, new NuGetPackSettings {
 		OutputDirectory = "./output/",
-		Version = version,
+		Version = nugetVersion,
 	});
 });
 
