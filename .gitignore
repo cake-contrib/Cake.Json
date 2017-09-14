@@ -4,8 +4,10 @@ packages/
 Components/
 tools/
 nupkg/
+.vs/
 *.userprefs
 *.suo
 .nugetapikey
 xtc-api-key
 xtc-email
+/*.DotSettings.user

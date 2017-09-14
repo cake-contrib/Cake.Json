@@ -1,65 +1,20 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{83B40CBA-FF2C-4379-B2CC-A90F1A508383}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>Cake.Json.Tests</RootNamespace>
-    <AssemblyName>Cake.Json.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Cake.Core, Version=0.17.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Cake.Core.0.17.0\lib\net45\Cake.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Cake.Testing, Version=0.17.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Cake.Testing.0.17.1\lib\net45\Cake.Testing.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.3.7.1\lib\net45\nunit.framework.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Cake.Core" Version="0.22.0" />
+    <PackageReference Include="Cake.Testing" Version="0.22.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="NUnit" Version="3.8.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.8.0" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="Test.cs" />
-    <Compile Include="TestObject.cs" />
-    <Compile Include="FakeContext.cs" />
-    <Compile Include="FakeCakeArguments.cs" />
+    <ProjectReference Include="..\Cake.Json\Cake.Json.csproj" />
   </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <None Include="packages.config" />
-    <None Include="test.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Cake.Json\Cake.Json.csproj">
-      <Project>{25131E5C-E34A-446E-9364-1729B54D3DF1}</Project>
-      <Name>Cake.Json</Name>
-    </ProjectReference>
-  </ItemGroup>
+
 </Project>

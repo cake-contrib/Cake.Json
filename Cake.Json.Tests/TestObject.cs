@@ -1,20 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Cake.Json.Tests
 {
     public class TestObject
     {
-        public TestObject ()
+        public TestObject()
         {
             Name = "Testing";
             Items = new List<string> { "One", "Two", "Three" };
             KeysAndValues = new Dictionary<string, string> {
                 { "Key", "Value" },
                 { "AnotherKey", "AnotherValue" },
-                { "Such", "Wow" }               
+                { "Such", "Wow" }
             };
-            Nested = new NestedTestObject {
+            Nested = new NestedTestObject
+            {
                 Id = 0,
                 Value = 7.3
             };
@@ -34,25 +34,20 @@ namespace Cake.Json.Tests
             };
         }
 
-        public string Name { get;set; }
+        public string Name { get; set; }
 
         public List<string> Items { get; set; }
 
-        public Dictionary<string, string> KeysAndValues { get;set; }
+        public Dictionary<string, string> KeysAndValues { get; set; }
 
         public NestedTestObject Nested { get; set; }
 
-        public List<NestedTestObject> Multiples { get;set; }
+        public List<NestedTestObject> Multiples { get; set; }
     }
 
     public class NestedTestObject
     {
-        public NestedTestObject ()
-        {
-        }
-
-        public int Id { get;set; }
-        public double Value { get;set; }
+        public int Id { get; set; }
+        public double Value { get; set; }
     }
 }
-
