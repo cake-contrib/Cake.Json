@@ -12,18 +12,17 @@ namespace Cake.Json.Tests
         FakeLog log;
         DirectoryPath testsDir;
 
-
         public FakeCakeContext ()
         {
             testsDir = new DirectoryPath (
                 System.IO.Path.GetFullPath(
-                    System.IO.Path.Combine (AppDomain.CurrentDomain.BaseDirectory, "../../")));
+                    System.IO.Path.Combine (AppContext.BaseDirectory, "../../../")));
 
-            var environment = Cake.Testing.FakeEnvironment.CreateUnixEnvironment (false);
+            var environment = FakeEnvironment.CreateUnixEnvironment (false);
 
-            var fileSystem = new Cake.Testing.FakeFileSystem (environment);
+            var fileSystem = new FakeFileSystem (environment);
             var globber = new Globber (fileSystem, environment);
-            log = new Cake.Testing.FakeLog ();
+            log = new FakeLog ();
             var args = new FakeCakeArguments ();
             var processRunner = new ProcessRunner (environment, log);
             var registry = new WindowsRegistry ();

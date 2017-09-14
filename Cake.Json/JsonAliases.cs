@@ -1,9 +1,7 @@
-﻿using System;
-using Cake.Core.Annotations;
+﻿using Cake.Core.Annotations;
 using Cake.Core.IO;
 using Cake.Core;
 using System.IO;
-using System.Text;
 using Newtonsoft.Json.Linq;
 
 namespace Cake.Json

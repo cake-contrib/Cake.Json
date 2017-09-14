@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using System;
 using Cake.Core.IO;
 
 namespace Cake.Json.Tests
