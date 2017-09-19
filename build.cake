@@ -1,24 +1,23 @@
 #tool nuget:?package=NUnit.ConsoleRunner
 
-var sln = "./Cake.Json.sln";
-var nuspec = "./Cake.Json.nuspec";
-var nugetVersion = Argument ("nuget_version", EnvironmentVariable ("NUGET_VERSION") ?? "1.0.0.0");
+var name = "Json";
+var nugetVersion = Argument ("nuget_version", EnvironmentVariable ("NUGET_VERSION") ?? "0.0.0");
 var target = Argument ("target", "build");
 var configuration = Argument("configuration", EnvironmentVariable ("CONFIGURATION") ?? "Release");
 
 Task ("build").Does (() =>
 {
-	NuGetRestore (sln);
-	DotNetBuild (sln, c => c.Configuration = configuration);
+	MSBuild ($"./Cake.{name}.sln", c => c.Targets.Add ("restore"));
+	MSBuild ($"./Cake.{name}.sln", c => c.Configuration = configuration);
 });
 
 Task ("package").IsDependentOn("build").Does (() =>
 {
-	EnsureDirectoryExists ("./output/");
-
-	NuGetPack (nuspec, new NuGetPackSettings {
-		OutputDirectory = "./output/",
-		Version = nugetVersion,
+	MSBuild ($"./Cake.{name}/Cake.{name}.csproj", c => {
+		c.Configuration = configuration;
+		c.Targets.Add ("pack");
+		c.Properties.Add ("PackageVersion", new List<string> { nugetVersion });
+		c.Properties.Add ("IncludeSymbols", new List<string> { "true" });
 	});
 });
 
@@ -30,7 +29,8 @@ Task ("clean").Does (() =>
 
 Task("test").IsDependentOn("package").Does(() =>
 {
-	NUnit3("./**/bin/"+ configuration + "/*.Tests.dll");
+	MSBuild ($"./Cake.{name}.Tests/Cake.{name}.Tests.csproj", c => c.Configuration = configuration);
+	NUnit3("./**/bin/"+ configuration + "/**/*.Tests.dll");
 });
 
 Task ("Default")

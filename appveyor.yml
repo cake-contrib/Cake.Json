@@ -1,11 +1,13 @@
-version: 1.0.2.{build}
+image: Visual Studio 2017
+version: 2.0.0.{build}
 configuration: Release
 install:
 - set NUGET_VERSION=%APPVEYOR_BUILD_VERSION%
 build_script:
 - ps: .\build.ps1 -Target package
-test_script:
-- ps: .\build.ps1 -Target test
+test:
+  assemblies:
+    - '**\*.Tests.dll'
 artifacts:
-- path: output\*.nupkg
+- path: '**\bin\Release\*.nupkg'
   name: NuGet
