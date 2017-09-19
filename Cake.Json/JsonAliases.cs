@@ -9,7 +9,15 @@ using Newtonsoft.Json.Linq;
 namespace Cake.Json
 {
     /// <summary>
-    /// JSON related cake aliases.
+    /// <para>JSON related cake aliases.</para>
+    /// <para>
+    ///  In order to use aliases from this addin, you will need to also reference Newtonsoft.Json as an addin.
+    ///  Here is what including Cake.Json in your script should look like:
+    /// <code>
+    /// #addin package:?Cake.Json
+    /// #addin package:?Newtonsoft.Json&mp;version=9.0.1
+    /// </code>
+    /// </para>
     /// </summary>
     [CakeAliasCategory ("Json")]
     public static class JsonAliases
