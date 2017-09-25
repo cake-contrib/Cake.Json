@@ -4,7 +4,7 @@ Environment.SetVariableNames();
 
 BuildParameters.SetParameters(context: Context,
                             buildSystem: BuildSystem,
-                            sourceDirectoryPath: Context.Environment.WorkingDirectory,
+                            sourceDirectoryPath: "./src",
                             title: "Cake.Json",
                             repositoryOwner: "redth",
                             repositoryName: "Cake.Json",

@@ -26,4 +26,6 @@
     </None>
   </ItemGroup>
 
+  <Target Name="Pack"></Target>
+
 </Project>
