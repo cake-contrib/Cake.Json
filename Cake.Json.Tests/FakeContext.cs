@@ -15,9 +15,7 @@ namespace Cake.Json.Tests
 
         public FakeCakeContext ()
         {
-            testsDir = new DirectoryPath (
-                System.IO.Path.GetFullPath(
-                    System.IO.Path.Combine (AppDomain.CurrentDomain.BaseDirectory, "../../")));
+            testsDir = new DirectoryPath(System.IO.Path.GetFullPath(AppContext.BaseDirectory));
 
             var environment = Cake.Testing.FakeEnvironment.CreateUnixEnvironment (false);
 
