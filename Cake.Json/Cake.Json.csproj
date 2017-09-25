@@ -24,9 +24,5 @@
     <PackageReference Include="Cake.Common" Version="0.22.0" />
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
  
 </Project>
