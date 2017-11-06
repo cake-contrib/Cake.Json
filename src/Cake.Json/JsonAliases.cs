@@ -1,9 +1,8 @@
-﻿using System;
+﻿using System.IO;
+using Cake.Core;
 using Cake.Core.Annotations;
 using Cake.Core.IO;
-using Cake.Core;
-using System.IO;
-using System.Text;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Cake.Json
@@ -15,7 +14,7 @@ namespace Cake.Json
     ///  Here is what including Cake.Json in your script should look like:
     /// <code>
     /// #addin package:?Cake.Json
-    /// #addin package:?Newtonsoft.Json&mp;version=9.0.1
+    /// #addin package:?Newtonsoft.Json&amp;version=9.0.1
     /// </code>
     /// </para>
     /// </summary>
@@ -47,7 +46,7 @@ namespace Cake.Json
         [CakeMethodAlias]
         public static T DeserializeJson<T> (this ICakeContext context, string json)
         {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<T> (json);   
+            return JsonConvert.DeserializeObject<T> (json);   
         }
 
         /// <summary>
@@ -61,7 +60,7 @@ namespace Cake.Json
         public static void SerializeJsonToPrettyFile<T> (this ICakeContext context, FilePath filename, T instance)
         {
             File.WriteAllText (filename.MakeAbsolute (context.Environment).FullPath,
-                Newtonsoft.Json.JsonConvert.SerializeObject (instance, Newtonsoft.Json.Formatting.Indented));
+                JsonConvert.SerializeObject (instance, Formatting.Indented));
         }
 
         /// <summary>
@@ -75,7 +74,7 @@ namespace Cake.Json
         public static void SerializeJsonToFile<T> (this ICakeContext context, FilePath filename, T instance)
         {
             File.WriteAllText (filename.MakeAbsolute (context.Environment).FullPath,
-                Newtonsoft.Json.JsonConvert.SerializeObject (instance));
+                JsonConvert.SerializeObject (instance));
         }
 
         /// <summary>
@@ -88,7 +87,7 @@ namespace Cake.Json
         [CakeMethodAlias]
         public static string SerializeJson<T> (this ICakeContext context, T instance)
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject (instance);
+            return JsonConvert.SerializeObject (instance);
         }
 
         /// <summary>
@@ -101,7 +100,7 @@ namespace Cake.Json
         [CakeMethodAlias]
         public static string SerializeJsonPretty<T> (this ICakeContext context, T instance)
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject (instance, Newtonsoft.Json.Formatting.Indented);
+            return JsonConvert.SerializeObject (instance, Formatting.Indented);
         }
 
         /// <summary>

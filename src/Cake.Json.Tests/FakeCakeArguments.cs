@@ -18,7 +18,7 @@ namespace Cake.Json.Tests
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CakeArguments"/> class.
+        /// Initializes a new instance of the <see cref="FakeCakeArguments"/> class.
         /// </summary>
         public FakeCakeArguments()
         {
@@ -33,7 +33,7 @@ namespace Cake.Json.Tests
         {
             if (arguments == null)
             {
-                throw new ArgumentNullException("arguments");
+                throw new ArgumentNullException(nameof(arguments));
             }
             _arguments.Clear();
             foreach (var argument in arguments)
