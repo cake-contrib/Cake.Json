@@ -1,8 +1,9 @@
 ﻿using System;
-using Cake.Core.IO;
 using Cake.Core;
+using Cake.Core.IO;
 using Cake.Core.Tooling;
 using Cake.Testing;
+using Path = System.IO.Path;
 
 namespace Cake.Json.Tests
 {
@@ -15,13 +16,13 @@ namespace Cake.Json.Tests
 
         public FakeCakeContext ()
         {
-            testsDir = new DirectoryPath(System.IO.Path.GetFullPath(AppContext.BaseDirectory));
+            testsDir = new DirectoryPath(Path.GetFullPath(AppContext.BaseDirectory));
 
-            var environment = Cake.Testing.FakeEnvironment.CreateUnixEnvironment (false);
+            var environment = FakeEnvironment.CreateUnixEnvironment (false);
 
-            var fileSystem = new Cake.Testing.FakeFileSystem (environment);
+            var fileSystem = new FakeFileSystem (environment);
             var globber = new Globber (fileSystem, environment);
-            log = new Cake.Testing.FakeLog ();
+            log = new FakeLog ();
             var args = new FakeCakeArguments ();
             var processRunner = new ProcessRunner (environment, log);
             var registry = new WindowsRegistry ();

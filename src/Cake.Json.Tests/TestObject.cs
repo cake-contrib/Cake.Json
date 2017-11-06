@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Cake.Json.Tests
 {
@@ -34,7 +33,7 @@ namespace Cake.Json.Tests
             };
         }
 
-        public string Name { get;set; }
+        public string Name { get; set; }
 
         public List<string> Items { get; set; }
 
@@ -51,8 +50,8 @@ namespace Cake.Json.Tests
         {
         }
 
-        public int Id { get;set; }
-        public double Value { get;set; }
+        public int Id { get; set; }
+        public double Value { get; set; }
     }
 }
 
