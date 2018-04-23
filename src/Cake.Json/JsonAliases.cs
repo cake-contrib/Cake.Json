@@ -8,6 +8,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Cake.Json
 {
+#pragma warning disable CS1570
     /// <summary>
     /// <para>JSON related cake aliases.</para>
     /// <para>
@@ -19,6 +20,7 @@ namespace Cake.Json
     /// </code>
     /// </para>
     /// </summary>
+#pragma warning restore CS1570
     [CakeAliasCategory ("Json")]
     public static class JsonAliases
     {
