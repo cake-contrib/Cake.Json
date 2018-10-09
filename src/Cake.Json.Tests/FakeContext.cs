@@ -25,9 +25,10 @@ namespace Cake.Json.Tests
             var args = new FakeCakeArguments ();
             var processRunner = new ProcessRunner (environment, log);
             var registry = new WindowsRegistry ();
+            var data = new FakeCakeDataService();
 
             var tools = new ToolLocator(environment, new ToolRepository(environment), new ToolResolutionStrategy(fileSystem, environment, globber, new FakeConfiguration()));
-            context = new CakeContext (fileSystem, environment, globber, log, args, processRunner, registry, tools);
+            context = new CakeContext(fileSystem, environment, globber, log, args, processRunner, registry, tools, data);
             context.Environment.WorkingDirectory = testsDir;
         }
 

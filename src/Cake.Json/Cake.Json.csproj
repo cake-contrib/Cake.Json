@@ -19,9 +19,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Cake.Core" Version="0.26.0" />
-    <PackageReference Include="Cake.Common" Version="0.26.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+    <PackageReference Include="Cake.Core" Version="0.30.0" />
+    <PackageReference Include="Cake.Common" Version="0.30.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(TargetFramework) == 'net46'">
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
  
 </Project>
