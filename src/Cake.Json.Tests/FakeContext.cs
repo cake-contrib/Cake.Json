@@ -3,6 +3,7 @@ using Cake.Core.IO;
 using Cake.Core;
 using Cake.Core.Tooling;
 using Cake.Testing;
+using NSubstitute;
 
 namespace Cake.Json.Tests
 {
@@ -12,22 +13,23 @@ namespace Cake.Json.Tests
         FakeLog log;
         DirectoryPath testsDir;
 
-
-        public FakeCakeContext ()
+        public FakeCakeContext()
         {
             testsDir = new DirectoryPath(System.IO.Path.GetFullPath(AppContext.BaseDirectory));
 
-            var environment = Cake.Testing.FakeEnvironment.CreateUnixEnvironment (false);
+            var environment = FakeEnvironment.CreateUnixEnvironment(false);
 
-            var fileSystem = new Cake.Testing.FakeFileSystem (environment);
-            var globber = new Globber (fileSystem, environment);
-            log = new Cake.Testing.FakeLog ();
-            var args = new FakeCakeArguments ();
-            var processRunner = new ProcessRunner (environment, log);
-            var registry = new WindowsRegistry ();
+            var fileSystem = new FakeFileSystem(environment);
+            var globber = new Globber(fileSystem, environment);
+            log = new FakeLog();
+            var args = new FakeCakeArguments();
+            var registry = new WindowsRegistry();
 
-            var tools = new ToolLocator(environment, new ToolRepository(environment), new ToolResolutionStrategy(fileSystem, environment, globber, new FakeConfiguration()));
-            context = new CakeContext (fileSystem, environment, globber, log, args, processRunner, registry, tools);
+            var config = new FakeConfiguration();
+            var tools = new ToolLocator(environment, new ToolRepository(environment), new ToolResolutionStrategy(fileSystem, environment, globber, config));
+            var processRunner = new ProcessRunner(fileSystem, environment, log, tools, config);
+            var data = Substitute.For<ICakeDataService>();
+            context = new CakeContext(fileSystem, environment, globber, log, args, processRunner, registry, tools, data, config);
             context.Environment.WorkingDirectory = testsDir;
         }
 
@@ -39,15 +41,15 @@ namespace Cake.Json.Tests
             get { return context; }
         }
 
-        public string GetLogs ()
+        public string GetLogs()
         {
             return string.Join(Environment.NewLine, log.Entries);
         }
 
-        public void DumpLogs ()
+        public void DumpLogs()
         {
             foreach (var m in log.Entries)
-                Console.WriteLine (m);
+                Console.WriteLine(m);
         }
     }
 }

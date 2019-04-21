@@ -16,7 +16,7 @@ namespace Cake.Json
     ///  Here is what including Cake.Json in your script should look like:
     /// <code>
     /// #addin package:?Cake.Json
-    /// #addin package:?Newtonsoft.Json&mp;version=9.0.1
+    /// #addin package:?Newtonsoft.Json&mp;version=11.0.2
     /// </code>
     /// </para>
     /// </summary>
@@ -49,7 +49,7 @@ namespace Cake.Json
         [CakeMethodAlias]
         public static T DeserializeJson<T> (this ICakeContext context, string json)
         {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<T> (json);   
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<T> (json);
         }
 
         /// <summary>
