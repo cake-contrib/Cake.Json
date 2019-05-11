@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Cake.Core;
 using Cake.Core.IO;
 using Xunit;
 
@@ -15,7 +16,7 @@ namespace Cake.Json.Tests
 
         public JsonTests ()
         {
-            context = new FakeCakeContext ();   
+            context = new FakeCakeContext ();
 
             var file = new FilePath ("./serialized_pretty.json");
             _serializedPrettyJson = File.ReadAllText(file.MakeAbsolute(context.CakeContext.Environment).FullPath);
@@ -75,7 +76,7 @@ namespace Cake.Json.Tests
             var json = File.ReadAllText (file.MakeAbsolute (context.CakeContext.Environment).FullPath);
 
             Assert.NotEmpty (json);
-            Assert.Equal (_serializedPrettyJson, json);
+            Assert.Equal (_serializedPrettyJson.NormalizeLineEndings(), json.NormalizeLineEndings());
         }
 
         [Fact]
