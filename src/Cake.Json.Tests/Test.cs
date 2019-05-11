@@ -1,6 +1,7 @@
-﻿using Xunit;
-using System;
+﻿using System;
+using System.IO;
 using Cake.Core.IO;
+using Xunit;
 
 namespace Cake.Json.Tests
 {
@@ -10,9 +11,14 @@ namespace Cake.Json.Tests
 
         const string SERIALIZED_JSON =  @"{""Name"":""Testing"",""Items"":[""One"",""Two"",""Three""],""KeysAndValues"":{""Key"":""Value"",""AnotherKey"":""AnotherValue"",""Such"":""Wow""},""Nested"":{""Id"":0,""Value"":7.3},""Multiples"":[{""Id"":1,""Value"":14.6},{""Id"":2,""Value"":29.2},{""Id"":3,""Value"":58.4}]}";
 
+        private readonly string _serializedPrettyJson;
+
         public JsonTests ()
         {
-            context = new FakeCakeContext ();           
+            context = new FakeCakeContext ();   
+
+            var file = new FilePath ("./serialized_pretty.json");
+            _serializedPrettyJson = File.ReadAllText(file.MakeAbsolute(context.CakeContext.Environment).FullPath);
         }
 
         public void Dispose ()
@@ -32,6 +38,17 @@ namespace Cake.Json.Tests
         }
 
         [Fact]
+        public void SerializeToPrettyString ()
+        {
+            var obj = new TestObject ();
+
+            var json = context.CakeContext.SerializeJsonPretty (obj);
+
+            Assert.NotEmpty (json);
+            Assert.Equal (_serializedPrettyJson, json);
+        }
+
+        [Fact]
         public void SerializeToFile ()
         {
             var obj = new TestObject ();
@@ -40,10 +57,25 @@ namespace Cake.Json.Tests
 
             context.CakeContext.SerializeJsonToFile (file, obj);
 
-            var json = System.IO.File.ReadAllText (file.MakeAbsolute (context.CakeContext.Environment).FullPath);
+            var json = File.ReadAllText (file.MakeAbsolute (context.CakeContext.Environment).FullPath);
 
             Assert.NotEmpty (json);
             Assert.Equal (SERIALIZED_JSON, json);
+        }
+
+        [Fact]
+        public void SerializeToPrettyFile ()
+        {
+            var obj = new TestObject ();
+
+            var file = new FilePath ("./serialized_pretty.json");
+
+            context.CakeContext.SerializeJsonToPrettyFile (file, obj);
+
+            var json = File.ReadAllText (file.MakeAbsolute (context.CakeContext.Environment).FullPath);
+
+            Assert.NotEmpty (json);
+            Assert.Equal (_serializedPrettyJson, json);
         }
 
         [Fact]

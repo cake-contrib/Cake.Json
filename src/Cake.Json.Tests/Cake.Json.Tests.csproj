@@ -7,7 +7,7 @@
   <ItemGroup>
     <PackageReference Include="Cake.Core" Version="0.26.0" />
     <PackageReference Include="Cake.Testing" Version="0.26.0" />
-    <PackageReference Include="Newtonsoft.Json" version="9.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
     <PackageReference Include="xunit" Version="2.3.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
@@ -19,6 +19,9 @@
 
   <ItemGroup>
     <None Update="serialized.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="serialized_pretty.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="test.json">
