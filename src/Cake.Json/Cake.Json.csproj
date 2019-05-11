@@ -14,7 +14,7 @@
     <Authors>Redth</Authors>
     <Owners>Redth</Owners>
     <PackageProjectUrl>https://github.com/redth/Cake.Json</PackageProjectUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/redth/Cake.Json/master/icon.png</PackageIconUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</PackageIconUrl>
     <PackageLicenseUrl>https://raw.githubusercontent.com/redth/Cake.Json/master/LICENSE.md</PackageLicenseUrl>
   </PropertyGroup>
 
