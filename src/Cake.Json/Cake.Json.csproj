@@ -13,9 +13,11 @@
     <PackageTags>Cake Script Build</PackageTags>
     <Authors>Redth</Authors>
     <Owners>Redth</Owners>
+    <RepositoryUrl>https://github.com/cake-contrib/Cake.Json.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://github.com/redth/Cake.Json</PackageProjectUrl>
     <PackageIconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/cake-contrib-medium.png</PackageIconUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/redth/Cake.Json/master/LICENSE.md</PackageLicenseUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
