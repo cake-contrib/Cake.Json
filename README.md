@@ -7,10 +7,10 @@ You can easily reference Cake.Json directly in your build script via a cake addi
 
 ```csharp
 #addin nuget:?package=Cake.Json
-#addin nuget:?package=Newtonsoft.Json&version=11.0.2
+#addin nuget:?package=Newtonsoft.Json&version=12.0.2
 ```
 
-NOTE: It's very important at this point in time to specify the Newtonsoft.Json package *and* the version _11.0.2_ for it.
+NOTE: It's very important at this point in time to specify the Newtonsoft.Json package *and* the version _12.0.2_ for it.
 
 ## Aliases
 
