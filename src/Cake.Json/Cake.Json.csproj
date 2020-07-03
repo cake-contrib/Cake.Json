@@ -12,16 +12,20 @@
     <Description>Cake Build addon for JSON Serialization and manipulation.</Description>
     <PackageTags>Cake Script Build</PackageTags>
     <Authors>Redth</Authors>
-    <Owners>Redth</Owners>
+    <Owners>Redth, cake-contrib</Owners>
     <RepositoryUrl>https://github.com/cake-contrib/Cake.Json.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageProjectUrl>https://github.com/redth/Cake.Json</PackageProjectUrl>
-    <PackageIconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/cake-contrib-medium.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/cake-contrib/Cake.Json</PackageProjectUrl>
+    <PackageIcon>cake-contrib-medium.png</PackageIcon>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\cake-contrib-medium.png" Pack="true" PackagePath="" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Cake.Core" Version="0.35.0" PrivateAssets="All" />
