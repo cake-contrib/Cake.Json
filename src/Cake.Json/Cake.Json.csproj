@@ -12,10 +12,10 @@
     <Description>Cake Build addon for JSON Serialization and manipulation.</Description>
     <PackageTags>Cake Script Build</PackageTags>
     <Authors>Redth</Authors>
-    <Owners>Redth</Owners>
+    <Owners>Redth, cake-contrib</Owners>
     <RepositoryUrl>https://github.com/cake-contrib/Cake.Json.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageProjectUrl>https://github.com/redth/Cake.Json</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/cake-contrib/Cake.Json</PackageProjectUrl>
     <PackageIconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/cake-contrib-medium.png</PackageIconUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
