@@ -252,5 +252,10 @@ $cakeArguments += $ScriptArgs
 
 # Start Cake
 Write-Host "Running build script..."
-Invoke-Expression "& $CAKE_EXE_INVOCATION $($cakeArguments -join " ")"
+
+Invoke-Expression "& $CAKE_EXE_INVOCATION --bootstrap"
+if ($LASTEXITCODE -eq 0)
+{
+    Invoke-Expression "& $CAKE_EXE_INVOCATION $($cakeArguments -join " ")"
+}
 exit $LASTEXITCODE
