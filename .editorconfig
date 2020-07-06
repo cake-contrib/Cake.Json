@@ -1,23 +1,38 @@
-; This file is for unifying the coding style for different editors and IDEs.
-; More information at http://EditorConfig.org
-
 root = true
 
 [*]
-end_of_line = CRLF
-
-[*.ps1]
-indent_style = space
+charset = utf-8
 indent_size = 4
-
-[*.cs]
 indent_style = space
-indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
 
-[*.cake]
-indent_style = space
-indent_size = 4
+# This may not be needed, but kept for compatibility with VS
+[*.{sln,csproj}]
+end_of_line = crlf
 
-[*.js]
-indent_style = tab
+# Markdown files allows the use of trailing spaces to denote
+# a line break
+[*.md]
+trim_trailing_whitespace = false
+
+# Batch and powershell files requires crlf to be
+# used as the line ending.
+# Powershell also requires UTF-8 with BOM encoding
+# to function if utf8 characters is used (maibe batch files as well)
+[*.{bat,ps1}]
+charset = utf-8-bom
+end_of_line = crlf
+
+# Shell scripts requires the use of lf line endings
+# to be able to run.
+[*.sh]
+end_of_line = lf
+
+[*.{yml,yaml}]
 indent_size = 2
+
+# The visual studio code file
+# requires the use of crlf line endings
+[tasks.json]
+end_of_line = crlf
