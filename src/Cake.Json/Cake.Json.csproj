@@ -18,9 +18,6 @@
     <PackageProjectUrl>https://github.com/cake-contrib/Cake.Json</PackageProjectUrl>
     <PackageIcon>cake-contrib-medium.png</PackageIcon>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
@@ -31,7 +28,6 @@
     <PackageReference Include="Cake.Core" Version="0.35.0" PrivateAssets="All" />
     <PackageReference Include="Cake.Common" Version="0.35.0" PrivateAssets="All" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
   </ItemGroup>
 
 </Project>
