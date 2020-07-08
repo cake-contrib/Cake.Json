@@ -71,7 +71,7 @@ if [ ! -f "$PACKAGES_CONFIG_MD5" ] || [ "$( cat "$PACKAGES_CONFIG_MD5" | sed 's/
     find . -type d ! -name . ! -name 'Cake.Bakery' | xargs rm -rf
 fi
 
-mono "$NUGET_EXE" install -ExcludeVersion
+mono "$NUGET_EXE" install -ExcludeVersion -Source https://pkgs.dev.azure.com/cake-build/Cake/_packaging/cake/nuget/v3/index.json
 if [ $? -ne 0 ]; then
     echo "Could not restore NuGet tools."
     exit 1
@@ -114,4 +114,4 @@ if [ ! -f "$CAKE_EXE" ]; then
 fi
 
 # Start Cake
-(exec mono "$CAKE_EXE" recipe.cake --bootstrap) && (exec mono "$CAKE_EXE" recipe.cake "$@")
+(exec mono "$CAKE_EXE" recipe.cake --bootstrap) && (exec mono "$CAKE_EXE" recipe.cake "${CAKE_ARGUMENTS[@]}")
