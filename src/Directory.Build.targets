@@ -1,8 +1,13 @@
+
 <!-- This target must be imported into Directory.Build.targets -->
-<!-- Workaround. Remove once we're on 3.1.300+
+<!-- Workaround. Remove once we're targeting the 3.1.300+ SDK
 https://github.com/dotnet/sourcelink/issues/572 -->
 <Project>
   <PropertyGroup>
+    <!-- Uncomment the following if you want to have pdb files embedded inside a nupkg package -->
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <TargetFrameworkMonikerAssemblyAttributesPath>$([System.IO.Path]::Combine('$(IntermediateOutputPath)','$(TargetFrameworkMoniker).AssemblyAttributes$(DefaultLanguageSourceExtension)'))</TargetFrameworkMonikerAssemblyAttributesPath>
   </PropertyGroup>
   <ItemGroup>
@@ -13,11 +18,11 @@ https://github.com/dotnet/sourcelink/issues/572 -->
   </ItemGroup>
 
   <Target Name="CoverletGetPathMap"
-        DependsOnTargets="InitializeSourceRootMappedPaths"
-        Returns="@(_LocalTopLevelSourceRoot)"
-        Condition="'$(DeterministicSourcePaths)' == 'true'">
+          DependsOnTargets="InitializeSourceRootMappedPaths"
+          Returns="@(_LocalTopLevelSourceRoot)"
+          Condition="'$(DeterministicSourcePaths)' == 'true'">
     <ItemGroup>
-    <_LocalTopLevelSourceRoot Include="@(SourceRoot)" Condition="'%(SourceRoot.NestedRoot)' == ''"/>
+      <_LocalTopLevelSourceRoot Include="@(SourceRoot)" Condition="'%(SourceRoot.NestedRoot)' == ''"/>
     </ItemGroup>
   </Target>
 </Project>
