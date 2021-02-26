@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Cake.Core;
 using Cake.Core.IO;
 using Cake.Core.Tooling;
@@ -27,7 +27,7 @@ namespace Cake.Json.Tests
             var registry = new WindowsRegistry();
 
             var config = new FakeConfiguration();
-            var tools = new ToolLocator(environment, new ToolRepository(environment), new ToolResolutionStrategy(fileSystem, environment, globber, config));
+            var tools = new ToolLocator(environment, new ToolRepository(environment), new ToolResolutionStrategy(fileSystem, environment, globber, config, log));
             var processRunner = new ProcessRunner(fileSystem, environment, log, tools, config);
             var data = Substitute.For<ICakeDataService>();
             context = new CakeContext(fileSystem, environment, globber, log, args, processRunner, registry, tools, data, config);
