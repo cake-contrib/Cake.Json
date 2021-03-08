@@ -17,7 +17,6 @@ on:
 jobs:
   build:
     runs-on: ${{ matrix.os }}
-    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
     strategy:
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
