@@ -12,7 +12,7 @@
     <Title>Cake.Json</Title>
     <Summary>JSON Serialization and manipulation addon for cake build.</Summary>
     <Description>Cake Build addon for JSON Serialization and manipulation.</Description>
-    <PackageTags>Cake Script Build</PackageTags>
+    <PackageTags>cake;script;build;cake-addin</PackageTags>
     <Authors>Redth</Authors>
     <Owners>Redth, cake-contrib</Owners>
     <RepositoryUrl>https://github.com/cake-contrib/Cake.Json.git</RepositoryUrl>
