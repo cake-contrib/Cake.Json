@@ -1,5 +1,5 @@
-using System;
 using Cake.Core;
+using System;
 using System.Collections.Generic;
 
 namespace Cake.Json.Tests
@@ -61,6 +61,11 @@ namespace Cake.Json.Tests
             _arguments.TryGetValue(name, out List<string> value);
             ICollection<string> collection = value;
             return collection ?? Array.Empty<string>();
+        }
+
+        public IDictionary<string, ICollection<string>> GetArguments()
+        {
+            return _arguments as IDictionary<string, ICollection<string>>;
         }
     }
 }
