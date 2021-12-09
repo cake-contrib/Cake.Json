@@ -6,11 +6,11 @@ A set of aliases for http://cakebuild.net to help with JSON Serialization and ma
 You can easily reference Cake.Json directly in your build script via a cake addin:
 
 ```csharp
-#addin nuget:?package=Cake.Json
-#addin nuget:?package=Newtonsoft.Json&version=12.0.2
+#addin nuget:?package=Cake.Json&version=7.0.1
+#addin nuget:?package=Newtonsoft.Json&version=13.0.1
 ```
 
-NOTE: It's very important at this point in time to specify the Newtonsoft.Json package *and* the version _12.0.2_ for it.
+NOTE: It's very important at this point in time to specify the Newtonsoft.Json package *and* the version _13.0.1_ for it.
 
 ## Aliases
 
