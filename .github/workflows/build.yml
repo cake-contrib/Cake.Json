@@ -2,6 +2,14 @@ name: Build
 
 on:
   push:
+    branches:
+      - master
+      - develop
+      - "feature/**"
+      - "release/**"
+      - "hotfix/**"
+    tags:
+      - "*"
     paths-ignore:
       - "README.md"
   pull_request:
@@ -9,7 +17,6 @@ on:
 jobs:
   build:
     runs-on: ${{ matrix.os }}
-    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
     strategy:
       matrix:
         os: [windows-latest, ubuntu-18.04, macos-latest]
@@ -39,6 +46,15 @@ jobs:
 
       - name: Fetch all tags and branches
         run: git fetch --prune --unshallow
+        
+      - name: Install .NET SDK
+        uses: actions/setup-dotnet@v1
+        with:          
+          # gitversion needs 5.0 and we need all SDKs the project is targeting
+          dotnet-version: |
+            3.1.415
+            5.0.403
+            6.0.100
 
       - name: Cache Tools
         uses: actions/cache@v2
