@@ -21,7 +21,7 @@ jobs:
         ref: ${{ github.event.ref }}
 
     - name: Cache Tools
-      uses: actions/cache@v3
+      uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
       with:
         path: tools
         key: ${{ runner.os }}-doc-tools-${{ hashFiles('recipe.cake') }}
