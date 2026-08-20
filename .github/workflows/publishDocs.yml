@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - name: checkout
-      uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3 #https://github.com/actions/checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7 #https://github.com/actions/checkout
       with:
         fetch-depth: 0 # GitVersion is somewhat irritated when fetch-depth is "1"....
         ref: ${{ github.event.ref }}
