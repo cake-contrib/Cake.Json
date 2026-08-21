@@ -8,7 +8,7 @@
   <ItemGroup>
     <PackageReference Include="Cake.Core" Version="6.0.0" />
     <PackageReference Include="Cake.Testing" Version="6.0.0" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.400" PrivateAssets="All" />
     <PackageReference Include="NSubstitute" Version="4.4.0" />
     <PackageReference Include="xunit" Version="2.9.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
