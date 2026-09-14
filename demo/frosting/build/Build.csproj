@@ -9,7 +9,7 @@
     <Reference Include="Cake.Json">
       <HintPath>$(MSBuildProjectDirectory)\..\..\..\BuildArtifacts\temp\_PublishedLibraries\Cake.Json\net8.0\Cake.Json.dll</HintPath>
     </Reference>
-    <PackageReference Include="Cake.Frosting" Version="6.2.0" />
+    <PackageReference Include="Cake.Frosting" Version="6.3.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
   </ItemGroup>
 </Project>
